@@ -107,4 +107,4 @@ var e=require("react-is"),r=!0;module.exports=require("./factoryWithTypeCheckers
 },{"react":"n8MK","../../api/goalsApi":"vzgl","../../components/GoalsList/GoalsList":"Q7fp"}],"Focm":[function(require,module,exports) {
 "use strict";var e=u(require("react")),r=u(require("react-dom")),t=u(require("bulma")),a=u(require("./containers/GoalPage/GoalPage"));function u(e){return e&&e.__esModule?e:{default:e}}r.default.render(e.default.createElement(a.default,null),document.getElementById("appContainer"));
 },{"react":"n8MK","react-dom":"NKHc","bulma":"Ns04","./containers/GoalPage/GoalPage":"P3xR"}]},{},["Focm"], null)
-//# sourceMappingURL=/src.def126af.js.map
+//# sourceMappingURL=src.def126af.js.map
