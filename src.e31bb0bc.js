@@ -31642,7 +31642,7 @@ var _axios = _interopRequireDefault(require("axios"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var getGoals = function getGoals() {
-  return _axios.default.get("https://gist.githubusercontent.com/Bomberlt/9b6c62a7b6e7450be7982a29a06e9058/raw");
+  return _axios.default.get("https://gist.githubusercontent.com/Bomberlt/9b6c62a7b6e7450be7982a29a06e9058/raw/fe41688599573cc45de4e238bba372dc9fcaa04d/2021GoalsData.json");
 };
 
 var _default = {
@@ -33055,8 +33055,9 @@ var GoalsPage = /*#__PURE__*/function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       _goalsApi.default.getGoals().then(function (response) {
         return _this.setState(_objectSpread({}, response.data));
-      }); // TODO: Handle failure
-
+      }).catch(function () {
+        return console.log("bad data");
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function () {
@@ -33127,7 +33128,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55505" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61496" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
