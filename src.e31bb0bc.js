@@ -31642,7 +31642,7 @@ var _axios = _interopRequireDefault(require("axios"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var getGoals = function getGoals() {
-  return _axios.default.get("https://gist.githubusercontent.com/Bomberlt/9b6c62a7b6e7450be7982a29a06e9058/raw/fe41688599573cc45de4e238bba372dc9fcaa04d/2021GoalsData.json");
+  return _axios.default.get("https://gist.githubusercontent.com/Bomberlt/9b6c62a7b6e7450be7982a29a06e9058/raw/1d101057a96f10de47b558a1cc78ab0c973a83ea/2021GoalsData.json");
 };
 
 var _default = {
@@ -32762,7 +32762,7 @@ var GoalItem = function GoalItem(_ref) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "tile is-parent"
   }, /*#__PURE__*/_react.default.createElement("article", {
-    className: "tile is-child"
+    className: "tile is-child is-12"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "title is-4"
   }, title ? title : "[untitled]"), /*#__PURE__*/_react.default.createElement("p", {
@@ -32914,7 +32914,7 @@ var Goal = function Goal(_ref) {
   }, name), renderProgress(data, type), /*#__PURE__*/_react.default.createElement(_Hideable.default, {
     isHidden: hideItems == null || hideItems
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "tile is-ancestor is-16"
+    className: "columns"
   }, mapGoalItems(data.entries))));
 };
 
@@ -32932,14 +32932,40 @@ var renderProgress = function renderProgress(data, type) {
   }
 };
 
-var mapGoalItems = function mapGoalItems(items) {
-  return items.map(function (item, index) {
-    return /*#__PURE__*/_react.default.createElement(_GoalItem.default, {
-      key: index,
-      title: item.value,
-      date: item.date,
-      imageUrl: item.imageUrl
+var chunkArray = function chunkArray(array, chunk_size) {
+  var results = [];
+
+  while (array.length) {
+    results.push(array.splice(0, chunk_size));
+  }
+
+  return results;
+};
+
+var transpose = function transpose(a) {
+  return a[0].map(function (_, c) {
+    return a.map(function (r) {
+      return r[c];
     });
+  });
+};
+
+var mapGoalItems = function mapGoalItems(items) {
+  var chunkedItems = transpose(chunkArray(items, 3));
+  return chunkedItems.map(function (row, rowIndex) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: rowIndex,
+      className: "column"
+    }, row.map(function (item, index) {
+      return /*#__PURE__*/_react.default.createElement("div", {
+        key: index,
+        className: "col"
+      }, /*#__PURE__*/_react.default.createElement(_GoalItem.default, {
+        title: item.value,
+        date: item.date,
+        imageUrl: item.imageUrl
+      }));
+    }));
   });
 };
 
@@ -33128,7 +33154,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61496" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56945" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
